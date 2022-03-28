@@ -8,11 +8,11 @@ Puppet::Type.type(:package).provide :fluentd_gem, :parent => :gem do
     not a valid URL, it will be interpreted as the path to a local gem file.  If
     source is not present at all, the gem will be installed from the default gem
     repositories."
-  confine :exists => "/opt/td-agent/embedded/bin/gem"
+  confine :exists => "/opt/td-agent/bin/gem"
 
   has_feature :versionable, :install_options
 
-  commands :gemcmd => "/opt/td-agent/embedded/bin/gem"
+  commands :gemcmd => "/opt/td-agent/bin/gem"
 
   def uninstall
     command = [command(:gemcmd), "uninstall"]

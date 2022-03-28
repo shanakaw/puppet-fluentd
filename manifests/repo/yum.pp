@@ -12,7 +12,10 @@ class fluentd::repo::yum (
   yumrepo { 'treasure-data':
     ensure   => $ensure,
     descr    => $descr,
-    baseurl  => $baseurl,
+    baseurl  => $::operatingsystem ? {
+      'Amazon' => 'http://packages.treasuredata.com/4/amazon/2/$basearch',
+      default  => $baseurl,
+    },
     enabled  => $enabled,
     gpgcheck => $gpgcheck,
     notify   => Exec['add GPG key'],

@@ -2,6 +2,14 @@
 #
 class fluentd::service inherits fluentd {
 
+  file {
+  '/opt/td-agent':
+    owner   => 'td-agent',
+    group   => 'td-agent',
+    mode    => '0777',
+    recurse =>  true,
+  }
+
   if $::fluentd::service_manage {
     service { 'fluentd':
       ensure     => $::fluentd::service_ensure,

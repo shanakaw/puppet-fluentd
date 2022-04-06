@@ -6,7 +6,7 @@ class fluentd::service inherits fluentd {
   '/opt/td-agent':
     owner   => 'td-agent',
     group   => 'td-agent',
-    mode    => '0777',
+    mode    => '0644',
     recurse =>  true,
   }
 
